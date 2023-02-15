@@ -12,7 +12,7 @@ export const FilmDeteils = () => {
   const { id } = useParams();
   const [deteils, setDeteils] = useState([]);
   const locaction = useLocation();
-  const bakLink = locaction.state?.from ?? '/home';
+  const bakLink = locaction.state?.from ?? '/';
  
 
   useEffect(() => {

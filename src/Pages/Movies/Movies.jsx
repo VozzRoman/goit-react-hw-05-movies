@@ -33,10 +33,6 @@ const handleFromSubmit = (value) => {
 }
 
 
-
-
-
-
   return (
 	<main>
 	 <Container>
