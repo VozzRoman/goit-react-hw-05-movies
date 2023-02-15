@@ -4,13 +4,13 @@ import { CardFilm, Overview, PosterInfo } from './FilmDeteils.styled';
 import { useEffect } from 'react';
 import { getDeteilsMovie } from 'apiService/apiService';
 import { useState } from 'react';
-import { getGenreMovie } from 'apiService/apiService';
+
 
 export const FilmDeteils = () => {
   const pathImage = 'https://image.tmdb.org/t/p/w500';
   const { id } = useParams();
   const [deteils, setDeteils] = useState([]);
-  const [genres, setGenres] = useState([]);
+ 
 
   useEffect(() => {
 	
@@ -19,37 +19,19 @@ export const FilmDeteils = () => {
       console.log(response.data);
       setDeteils(response.data);
     }
-	 async function genreMovies (){
-		const response = await getGenreMovie();
-		const data = response.data.genres;
-		setGenres(data);
-	}
-	genreMovies();
+
     deteilsMovies();
   }, [id]);
 
-console.log(genres);
-console.log(deteils.id)
 
-// genres.forEach(el => {
-// 	console.log(el.id);
-//   })
+// const genreData = deteils.genres.map(item => item.name);
+// console.log(genreData);
 
-//   const idxGenre = (filmIdGenre, arrayId) => {
-// 	let setGenter = [];
-// 	filmIdGenre.forEach(el => {
-// 	  if (arrayId.includes(el.id)) {
-// 		 setGenter.push(el.name);
-// 	  }
-// 	});
-// 	return setGenter.join(', ');
-//  }
-
-
+console.log(deteils.genres)
 
   return (
     <Container>
-      {deteils && (
+    
         <>
           <CardFilm key={deteils.id}>
             <PosterInfo>
@@ -61,7 +43,7 @@ console.log(deteils.id)
                   Overview <span>{deteils.overview}</span>
                 </Overview>
                 <Overview>
-                  Genre <span>{deteils.overview}</span>
+                  Genre <span></span>
                 </Overview>
               </ul>
             </PosterInfo>
@@ -77,7 +59,7 @@ console.log(deteils.id)
           </ul>
           <Outlet />
         </>
-      )}
+
     </Container>
   );
 };
