@@ -1,5 +1,6 @@
 import { Container } from 'components/App.styled';
 
+
 import { Alink, ItemLink } from './HomeList.styled';
 
 export const HomeList = ({ trandingFilms, prevLocation}) => {

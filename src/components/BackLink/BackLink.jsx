@@ -1,11 +1,12 @@
-import { Link } from "react-router-dom";
+
 import { IoIosArrowBack } from "react-icons/io";
+import { ButtonBack } from "./BackList.styled";
 
 export const BackLink = ({to, children}) => {
 	return(
-		<Link to={to}>
+		<ButtonBack to={to}>
 		<IoIosArrowBack/>
 		{children}
-		</Link>
+		</ButtonBack>
 	)
 }

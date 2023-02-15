@@ -1,6 +1,6 @@
 import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { Container } from 'components/App.styled';
-import { CardFilm, Overview, PosterInfo } from './FilmDeteils.styled';
+import { CardFilm, ItemsList, Overview, PosterInfo } from './FilmDeteils.styled';
 import { useEffect } from 'react';
 import { getDeteilsMovie } from 'apiService/apiService';
 import { useState } from 'react';
@@ -26,9 +26,11 @@ export const FilmDeteils = () => {
     deteilsMovies();
   }, [id]);
 
-
+if(deteils.length > 0){
 const genreData = deteils.genres.map(item => item.name);
 console.log(genreData);
+}
+
 
 console.log(deteils.genres)
 
@@ -39,16 +41,16 @@ console.log(deteils.genres)
           <CardFilm key={deteils.id}>
             <PosterInfo>
               <img src={pathImage + deteils.poster_path} alt="" width="200" />
-              <ul>
+              <ItemsList>
                 <h2>{deteils.title}</h2>
-                <p>User score</p>
+                <p>User score: {deteils.popularity}</p>
                 <Overview>
                   Overview <span>{deteils.overview}</span>
                 </Overview>
                 <Overview>
                   Genre <span></span>
                 </Overview>
-              </ul>
+              </ItemsList>
             </PosterInfo>
           </CardFilm>
           <ul>

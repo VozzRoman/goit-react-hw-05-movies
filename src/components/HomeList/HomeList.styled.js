@@ -11,9 +11,11 @@ display: flex;
 export const Alink = styled(Link)`
 cursor: pointer;
 &:not(:last-child){
-	display: block;
+	display: inline-block;
+	display: flex;
+	
 	margin-bottom: 5px;
-	text-decoration: none;
+	
 }
 
-`
+`;

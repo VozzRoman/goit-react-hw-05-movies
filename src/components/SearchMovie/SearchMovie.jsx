@@ -1,3 +1,5 @@
+import { ButtonSearch, Input, SearchForm } from "./SearchMovie.styled";
+
 export const SearchMovie = ({onSubmit}) => {
 
 	const handleSubmit = (e) => {
@@ -11,18 +13,18 @@ export const SearchMovie = ({onSubmit}) => {
 	
 	  return (
 		 <>
-			<form onSubmit={handleSubmit}>
+			<SearchForm onSubmit={handleSubmit}>
 			  <label>
-				 <input
+				 <Input
 					autoComplete="off"
 					type="text"
 					name="name"
-					placeholder=""
+					placeholder="search"
 					className="input"
 				 />
 			  </label>
-			  <button type="submit">Отправить</button>
-			</form>
+			  <ButtonSearch type="submit">Отправить</ButtonSearch>
+			</SearchForm>
 		 </>
 	  );
 	};

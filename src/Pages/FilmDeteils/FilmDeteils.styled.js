@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const CardFilm = styled.div`
 border-bottom: 2px solid gray;
-padding: 40px 0;
+padding: 20px 0;
 
 `;
 
@@ -23,3 +23,7 @@ font-weight: 600;
  }
 `;
 
+export const ItemsList = styled.ul`
+margin-left: 20px;
+
+`

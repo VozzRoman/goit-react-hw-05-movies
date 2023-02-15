@@ -23,7 +23,7 @@ const [movies, setMovies] = useState([]);
   return (
     <main>
       <Container>
-        <div>{title}</div>
+        <h2>{title}</h2>
 		  {movies && <HomeList trandingFilms={movies}/>}
   
       </Container>
