@@ -31,13 +31,13 @@ export const FilmDeteils = () => {
 // console.log(genreData);
 // }
 
-
+console.log(deteils);
 
 
   return (
     <Container>
 				<BackLink to={bakLink}>Go back</BackLink>
-       {deteils && <>
+       {deteils.length && <>
           <CardFilm key={deteils.id}>
             <PosterInfo>
               <img src={pathImage + deteils.poster_path} alt="" width="200" />
