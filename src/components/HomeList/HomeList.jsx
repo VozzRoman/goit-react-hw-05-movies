@@ -1,5 +1,6 @@
 import { Container } from 'components/App.styled';
-import { Link } from 'react-router-dom';
+
+import { Alink, ItemLink } from './HomeList.styled';
 
 export const HomeList = ({ trandingFilms, prevLocation}) => {
 	console.log(prevLocation);
@@ -9,9 +10,9 @@ export const HomeList = ({ trandingFilms, prevLocation}) => {
       <ul>
 			{trandingFilms.map(item => {
 				return(
-					<Link key={item.id} to={`movies/${item.id}`} state={{from: prevLocation}}>
-					<li >{item.title}</li>
-					</Link>
+					<Alink key={item.id} to={`movies/${item.id}`} state={{from: prevLocation}}>
+					<ItemLink >{item.title}</ItemLink>
+					</Alink>
 				)
 			})}
       </ul>

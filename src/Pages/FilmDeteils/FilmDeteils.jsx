@@ -27,8 +27,8 @@ export const FilmDeteils = () => {
   }, [id]);
 
 
-// const genreData = deteils.genres.map(item => item.name);
-// console.log(genreData);
+const genreData = deteils.genres.map(item => item.name);
+console.log(genreData);
 
 console.log(deteils.genres)
 
