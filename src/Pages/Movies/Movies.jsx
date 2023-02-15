@@ -5,14 +5,18 @@ import { SearchMovie } from "components/SearchMovie/SearchMovie";
 import { useEffect } from "react";
 
 import { useState } from "react";
+import { useLocation, useSearchParams } from "react-router-dom";
 
 export const Movies = () => {
-const [search, setSearch] = useState('');
+	const [searchParams, setSearchParams] = useSearchParams();
 const [films, setFilms] = useState([]);
+const location = useLocation();
+console.log(location.state);
 
+const search = searchParams.get('query');
 
 useEffect(()=> {
-	if(search === ''){
+	if(!search){
 		return;
 	}
 	async function searchMovie(){
@@ -26,7 +30,7 @@ useEffect(()=> {
 },[search])
 
 const handleFromSubmit = (value) => {
-	setSearch(value);
+	setSearchParams({query: `${value}`});
 	setFilms([]);
 	
 
@@ -37,7 +41,7 @@ const handleFromSubmit = (value) => {
 	<main>
 	 <Container>
 		<SearchMovie onSubmit={handleFromSubmit}/>
-		{/* <HomeList/> */}
+		<HomeList trandingFilms={films} prevLocation={location}/>
 	 </Container>
 	</main>
 
