@@ -10,7 +10,7 @@ import { BackLink } from 'components/BackLink/BackLink';
 export const FilmDeteils = () => {
   const pathImage = 'https://image.tmdb.org/t/p/w500';
   const { id } = useParams();
-  const [deteils, setDeteils] = useState({});
+  const [deteils, setDeteils] = useState(null);
   const locaction = useLocation();
   const bakLink = locaction.state?.from ?? '/';
  
@@ -26,10 +26,10 @@ export const FilmDeteils = () => {
     deteilsMovies();
   }, [id]);
 
-if(deteils.length > 0){
-const genreData = deteils.genres.map(item => item.name);
-console.log(genreData);
-}
+// if(deteils.length > 0){
+// const genreData = deteils.genres.map(item => item.name).join(', ');
+// return genreData;
+// }
 
 
 console.log(deteils.genres)
@@ -37,7 +37,7 @@ console.log(deteils.genres)
   return (
     <Container>
 				<BackLink to={bakLink}>Go back</BackLink>
-        <>
+        {deteils && <>
           <CardFilm key={deteils.id}>
             <PosterInfo>
               <img src={pathImage + deteils.poster_path} alt="" width="200" />
@@ -48,7 +48,7 @@ console.log(deteils.genres)
                   Overview <span>{deteils.overview}</span>
                 </Overview>
                 <Overview>
-                  Genre <span></span>
+                  Genre <span>{deteils.genres.map(item => item.name).join(', ')}</span>
                 </Overview>
               </ItemsList>
             </PosterInfo>
@@ -63,7 +63,7 @@ console.log(deteils.genres)
             </li>
           </ul>
           <Outlet />
-        </>
+        </>}
 
     </Container>
   );
