@@ -10,7 +10,7 @@ import { BackLink } from 'components/BackLink/BackLink';
 export const FilmDeteils = () => {
   const pathImage = 'https://image.tmdb.org/t/p/w500';
   const { id } = useParams();
-  const [deteils, setDeteils] = useState([]);
+  const [deteils, setDeteils] = useState({});
   const locaction = useLocation();
   const bakLink = locaction.state?.from ?? '/';
  
