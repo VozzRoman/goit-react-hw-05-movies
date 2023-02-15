@@ -1,15 +1,18 @@
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { Container } from 'components/App.styled';
 import { CardFilm, Overview, PosterInfo } from './FilmDeteils.styled';
 import { useEffect } from 'react';
 import { getDeteilsMovie } from 'apiService/apiService';
 import { useState } from 'react';
+import { BackLink } from 'components/BackLink/BackLink';
 
 
 export const FilmDeteils = () => {
   const pathImage = 'https://image.tmdb.org/t/p/w500';
   const { id } = useParams();
   const [deteils, setDeteils] = useState([]);
+  const locaction = useLocation();
+  const bakLink = locaction.state?.from ?? '/home';
  
 
   useEffect(() => {
@@ -31,7 +34,7 @@ console.log(deteils.genres)
 
   return (
     <Container>
-    
+				<BackLink to={bakLink}>Go back</BackLink>
         <>
           <CardFilm key={deteils.id}>
             <PosterInfo>
