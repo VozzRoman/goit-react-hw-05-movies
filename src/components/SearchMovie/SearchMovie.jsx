@@ -1,4 +1,4 @@
-import { ButtonSearch, Input, SearchForm } from "./SearchMovie.styled";
+import { ButtonSearch, Input, Label, SearchForm } from "./SearchMovie.styled";
 import PropTypes from 'prop-types';
 export const SearchMovie = ({onSubmit}) => {
 
@@ -14,7 +14,7 @@ export const SearchMovie = ({onSubmit}) => {
 	  return (
 		 <>
 			<SearchForm onSubmit={handleSubmit}>
-			  <label>
+			  <Label>
 				 <Input
 					autoComplete="off"
 					type="text"
@@ -22,8 +22,9 @@ export const SearchMovie = ({onSubmit}) => {
 					placeholder="search"
 					className="input"
 				 />
-			  </label>
-			  <ButtonSearch type="submit">Отправить</ButtonSearch>
+				 
+			  </Label>
+			  <ButtonSearch type="submit">Search</ButtonSearch>
 			</SearchForm>
 		 </>
 	  );

@@ -2,7 +2,7 @@ import { Container } from 'components/App.styled';
 import PropTypes from 'prop-types';
 import { Suspense } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Alink, ItemLink } from './HomeList.styled';
+import { Alink, ItemLink, ListFilms } from './HomeList.styled';
 
 const HomeList = ({ trandingFilms }) => {
   const location = useLocation();
@@ -11,15 +11,15 @@ const HomeList = ({ trandingFilms }) => {
   return (
     <Container>
       <Suspense>
-        <ul>
+        <ListFilms>
           {trandingFilms.map(({ id, title }) => {
             return (
-              <Alink key={id} to={`/movies/${id}`} state={{ from: location }}>
-                <ItemLink>{title}</ItemLink>
-              </Alink>
+					<ItemLink key={id}>
+              <Alink  to={`/movies/${id}`} state={{ from: location }}>{title} </Alink>
+				  </ItemLink>
             );
           })}
-        </ul>
+        </ListFilms>
       </Suspense>
     </Container>
   );

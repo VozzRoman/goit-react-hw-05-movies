@@ -1,21 +1,25 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
+export const ListFilms = styled.ul`
+list-style-type: disc;
+`;
+
 
 export const ItemLink = styled.li`
-display: inline-block;
-display: flex;
+display: block;
+&:not(:last-child){
+	margin-bottom: 5px;
+}
 
 `;
 
 export const Alink = styled(Link)`
 cursor: pointer;
-&:not(:last-child){
-	display: inline-block;
-	display: flex;
-	
-	margin-bottom: 5px;
-	
+color: black;
+&:hover{
+	color: blue;
 }
+
 
 `;

@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import Header from 'components/Header/Header';
 // const Header = lazy(() => import('./Header/Header'))
 const Home = lazy(() => import('../Pages/Home/Home'));
-const Movies = lazy(() => import('../Pages/Home/Home'));
+const Movies = lazy(() => import('../Pages/Movies/Movies'));
 const FilmDeteils = lazy(() => import('../Pages/FilmDeteils/FilmDeteils'));
 const Cast = lazy(() => import('./Cast/Cast'));
 const Reviews = lazy(() => import('./Reviews/Reviews'));
@@ -16,7 +16,7 @@ const Reviews = lazy(() => import('./Reviews/Reviews'));
 // import Cast from "./Cast/Cast";
 // import Reviews from "./Reviews/Reviews";
 
-export const App = () => {
+const App = () => {
   return (
     <>
     
@@ -37,3 +37,5 @@ export const App = () => {
     </>
   );
 };
+
+export default App;

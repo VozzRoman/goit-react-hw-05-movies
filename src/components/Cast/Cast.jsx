@@ -24,7 +24,7 @@ const Cast = () => {
 			{cast.map(({id, profile_path, name, character})=> {
 				return (
 					<CastItem key={id}>
-						<img src={profile_path ? pathImage + profile_path : noImagePoster} alt="poster" width='200'/>
+						<img src={profile_path ? pathImage + profile_path : noImagePoster} alt="poster" width='142'/>
 						<ActorName>{name}</ActorName>
 						<Role>{character}</Role>
 					</CastItem>

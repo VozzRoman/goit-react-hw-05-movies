@@ -1,10 +1,13 @@
-import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
+import { Outlet, useLocation, useParams } from 'react-router-dom';
 import { Container } from 'components/App.styled';
 import {
   CardFilm,
   ItemsList,
   Overview,
   PosterInfo,
+  PosterImage,
+  InformLink,
+  AddInfo
 } from './FilmDeteils.styled';
 import { Suspense, useEffect } from 'react';
 import { getDeteilsMovie } from 'apiService/apiService';
@@ -12,6 +15,7 @@ import { useState } from 'react';
 import { useRef } from 'react';
 import { BackLink } from 'components/BackLink/BackLink';
 import { Loader } from 'components/Loader/Loader';
+
 
 const FilmDeteils = () => {
   const pathImage = 'https://image.tmdb.org/t/p/w500';
@@ -55,11 +59,13 @@ const FilmDeteils = () => {
           <CardFilm key={deteils.id}>
 			 <Suspense fallback={<Loader/>}>
             <PosterInfo>
-              <img src={deteils.poster_path ? pathImage + deteils.poster_path : noImagePoster} alt="" width="200" />
-              <ItemsList>
+					<PosterImage>
+              <img src={deteils.poster_path ? pathImage + deteils.poster_path : noImagePoster} alt="" />
+              </PosterImage>
+				  <ItemsList>
 				 
                 <h2>{deteils.title}</h2>
-                <p>User score: {Math.round(deteils.vote_average * 10)}</p>
+                <Overview>User score: {Math.round(deteils.vote_average * 10)}%</Overview>
                 <Overview>
                   Overview <span>{deteils.overview}</span>
                 </Overview>
@@ -74,12 +80,12 @@ const FilmDeteils = () => {
 			</Suspense>
           </CardFilm>
           <ul>
-            <p>Additioinal information</p>
+            <AddInfo>Additioinal information</AddInfo>
             <li>
-              <Link to="cast">Cast</Link>
+              <InformLink to="cast">Cast</InformLink>
             </li>
             <li>
-              <Link to="reviews">Reviews</Link>
+              <InformLink to="reviews">Reviews</InformLink>
             </li>
           </ul>
 			 <Suspense fallback={<Loader/>}>

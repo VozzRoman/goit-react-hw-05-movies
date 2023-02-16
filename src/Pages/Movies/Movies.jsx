@@ -5,8 +5,9 @@ import { SearchMovie } from "components/SearchMovie/SearchMovie";
 import { Suspense, useEffect } from "react";
 import { Loader } from "components/Loader/Loader";
 import { useState } from "react";
+import { lazy } from "react";
 import { useLocation, useSearchParams } from "react-router-dom";
-const HomeList = lazy(()=> import('components/HomeList/HomeList'))
+const HomeList = lazy(()=> import('../../components/HomeList/HomeList'))
 
 const Movies = () => {
 const [searchParams, setSearchParams] = useSearchParams();

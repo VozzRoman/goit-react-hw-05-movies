@@ -4,7 +4,7 @@ export const CastList = styled.ul`
 display: flex;
 flex-wrap: wrap;
 max-width: 100%;
-justify-content: center;
+
 margin-left: -15px;
 margin-bottom: -15px;
 
