@@ -30,8 +30,8 @@ HomeList.propTypes = {
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       title: PropTypes.string.isRequired,
-    })
-  ),
+    }).isRequired,
+  ).isRequired,
 };
 
 export default HomeList;
