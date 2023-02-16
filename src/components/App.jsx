@@ -1,25 +1,25 @@
-import { lazy, Suspense } from 'react';
+// import { lazy} from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Header } from 'components/Header/Header';
 
-const Home = lazy(() => import('../Pages/Home/Home'));
-const Movies = lazy(() => import('../Pages/Home/Home'));
-const FilmDeteils = lazy(() => import('../Pages/FilmDeteils/FilmDeteils'));
-const Cast = lazy(() => import('./Cast/Cast'));
-const Reviews = lazy(() => import('./Reviews/Reviews'));
+// const Home = lazy(() => import('../Pages/Home/Home'));
+// const Movies = lazy(() => import('../Pages/Home/Home'));
+// const FilmDeteils = lazy(() => import('../Pages/FilmDeteils/FilmDeteils'));
+// const Cast = lazy(() => import('./Cast/Cast'));
+// const Reviews = lazy(() => import('./Reviews/Reviews'));
 
-// import { Home } from "Pages/Home/Home";
-// import { Movies } from "Pages/Movies/Movies";
+import { Home } from "Pages/Home/Home";
+import { Movies } from "Pages/Movies/Movies";
 // import { NotFoundPage } from "Pages/NotFound/NotFoundPage";
 
-// import { FilmDeteils } from "Pages/FilmDeteils/FilmDeteils";
-// import { Cast } from "./Cast/Cast";
-// import { Reviews } from "./Reviews/Reviews";
+import { FilmDeteils } from "Pages/FilmDeteils/FilmDeteils";
+import { Cast } from "./Cast/Cast";
+import { Reviews } from "./Reviews/Reviews";
 
 export const App = () => {
   return (
     <>
-      <Suspense>
+      {/* <Suspense> */}
         <Routes>
           <Route path="/" element={<Header />}>
             <Route index element={<Home title="Tranding today" />} />
@@ -32,7 +32,7 @@ export const App = () => {
             <Route path="*" element={<Home />} />
           </Route>
         </Routes>
-      </Suspense>
+      {/* </Suspense> */}
     </>
   );
 };
