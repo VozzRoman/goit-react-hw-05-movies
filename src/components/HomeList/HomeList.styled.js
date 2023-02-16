@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const ListFilms = styled.ul`
-list-style-type: disc;
 `;
 
 

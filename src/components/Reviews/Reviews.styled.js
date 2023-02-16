@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
 export const ReviewsList = styled.ul`
-
-
 `;
 
 export const Message = styled.p`
