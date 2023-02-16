@@ -1,12 +1,12 @@
 import { getSearchMovie } from "apiService/apiService";
 import { Container } from "components/App.styled";
-import HomeList from "components/HomeList/HomeList";
+// import HomeList from "components/HomeList/HomeList";
 import { SearchMovie } from "components/SearchMovie/SearchMovie";
 import { Suspense, useEffect } from "react";
 import { Loader } from "components/Loader/Loader";
-
 import { useState } from "react";
 import { useLocation, useSearchParams } from "react-router-dom";
+const HomeList = lazy(()=> import('components/HomeList/HomeList'))
 
 const Movies = () => {
 const [searchParams, setSearchParams] = useSearchParams();
@@ -31,8 +31,7 @@ useEffect(()=> {
 			setFilms(data);
 		} catch (error) {
 			console.log(error)
-		} finally {
-		}
+		} 
 	}
 	searchMovie();
 	
@@ -51,11 +50,9 @@ const handleFromSubmit = (value) => {
   return (
 	<main>
 	 <Container>
-	 <Suspense fallback={<Loader/>}>
 		<SearchMovie onSubmit={handleFromSubmit}/>
-		
+		<Suspense fallback={<Loader/>}/>
 		<HomeList trandingFilms={films} />
-		</Suspense>
 		
 	 </Container>
 	</main>

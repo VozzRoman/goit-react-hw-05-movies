@@ -14,8 +14,6 @@ const Home = ({title}) => {
 const [movies, setMovies] = useState([]);
 
 	useEffect(() => {
-	
-
 
 				async function trandMovies (){
 						
@@ -38,9 +36,9 @@ const [movies, setMovies] = useState([]);
       <Container>
         <h2>{title}</h2>
 		
-		  <Suspense fallback={<Loader/>}>
+		  <Suspense fallback={<Loader/>}/>
 		  {movies && <HomeList trandingFilms={movies}/>}
-		  </Suspense>
+		 
 		 
 		  
 		  
