@@ -4,15 +4,24 @@ import { CardFilm, ItemsList, Overview, PosterInfo } from './FilmDeteils.styled'
 import { useEffect } from 'react';
 import { getDeteilsMovie } from 'apiService/apiService';
 import { useState } from 'react';
+import { useRef } from 'react';
 import { BackLink } from 'components/BackLink/BackLink';
 
 
 export const FilmDeteils = () => {
   const pathImage = 'https://image.tmdb.org/t/p/w500';
   const { id } = useParams();
-  const [deteils, setDeteils] = useState([]);
-  const locaction = useLocation();
-  const bakLink = locaction.state?.from ?? '/';
+  const [deteils, setDeteils] = useState(null); // 
+  const location = useLocation();
+
+  console.log(location);
+  const initialPath = useRef(location?.state?.from?.pathname || null);
+  console.log(initialPath);
+
+  let backLink = '';
+  if (initialPath.current === '/') {
+    backLink = '/';
+  } else backLink = location.state?.from ?? "/movies";;
  
 
   useEffect(() => {
@@ -26,18 +35,13 @@ export const FilmDeteils = () => {
     deteilsMovies();
   }, [id]);
 
-// if(deteils.length > 0){
-// const genreData = deteils.genres.map(item => item.name).join(', ');
-// console.log(genreData);
-// }
 
-console.log(deteils);
 
 
   return (
     <Container>
-				<BackLink to={bakLink}>Go back</BackLink>
-       {deteils.length && <>
+				<BackLink to={backLink}>Go back</BackLink>
+       {deteils && <>
           <CardFilm key={deteils.id}>
             <PosterInfo>
               <img src={pathImage + deteils.poster_path} alt="" width="200" />

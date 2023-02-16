@@ -11,7 +11,7 @@ export const Movies = () => {
 	const [searchParams, setSearchParams] = useSearchParams();
 const [films, setFilms] = useState([]);
 const location = useLocation();
-console.log(location.state);
+console.log(location.search);
 
 const search = searchParams.get('query');
 
@@ -23,6 +23,9 @@ useEffect(()=> {
 		const response = await getSearchMovie(search);
 		const data = response.data.results;
 		console.log(data);
+		if(data.length === '') {
+
+		}
 		setFilms(data);
 	}
 	searchMovie();
@@ -41,7 +44,7 @@ const handleFromSubmit = (value) => {
 	<main>
 	 <Container>
 		<SearchMovie onSubmit={handleFromSubmit}/>
-		<HomeList trandingFilms={films} prevLocation={location}/>
+		<HomeList trandingFilms={films} />
 	 </Container>
 	</main>
 
