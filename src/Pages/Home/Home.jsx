@@ -23,9 +23,7 @@ const [movies, setMovies] = useState([]);
 						setMovies(data);
 					} catch (error) {
 						console.log(error);
-					} finally {
-					
-					}
+					} 
 				}
 
 			trandMovies();
