@@ -1,8 +1,9 @@
 import { Container} from 'components/App.styled';
 import { Outlet } from 'react-router-dom';
 import {HeaderStyle, NavList, NavItem, LinkHref} from 'components/Header/Header.styled';
+import { Suspense } from 'react';
 
-export const Header = () => {
+const Header = () => {
   return (
     <>
       <HeaderStyle>
@@ -19,7 +20,12 @@ export const Header = () => {
           </nav>
         </Container>
       </HeaderStyle>
+		<Suspense fallback={<div>Loading...</div>}>
 		<Outlet />
+		</Suspense>
+		
     </>
   );
 };
+
+export default Header;

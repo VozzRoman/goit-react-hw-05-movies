@@ -6,14 +6,14 @@ import {
   Overview,
   PosterInfo,
 } from './FilmDeteils.styled';
-import { useEffect } from 'react';
+import { Suspense, useEffect } from 'react';
 import { getDeteilsMovie } from 'apiService/apiService';
 import { useState } from 'react';
 import { useRef } from 'react';
 import { BackLink } from 'components/BackLink/BackLink';
 import { Loader } from 'components/Loader/Loader';
 
-export const FilmDeteils = () => {
+const FilmDeteils = () => {
   const pathImage = 'https://image.tmdb.org/t/p/w500';
   const noImagePoster = 'https://cdn.vectorstock.com/i/preview-1x/82/99/no-image-available-like-missing-picture-vector-43938299.jpg';
   const { id } = useParams();
@@ -48,7 +48,7 @@ export const FilmDeteils = () => {
 
     deteilsMovies();
   }, [id]);
-//   const {id,} = deteils
+
   return (
 	
     <Container>
@@ -85,9 +85,15 @@ export const FilmDeteils = () => {
               <Link to="reviews">Reviews</Link>
             </li>
           </ul>
-          <Outlet />
+			 <Suspense>
+			 <Outlet />
+			 </Suspense>
+         
         </>
       )}
     </Container>
   );
 };
+
+
+export default FilmDeteils;

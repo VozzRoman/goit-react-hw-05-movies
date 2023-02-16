@@ -1,15 +1,15 @@
 import { getSearchMovie } from "apiService/apiService";
 import { Container } from "components/App.styled";
-import { HomeList } from "components/HomeList/HomeList";
+import HomeList from "components/HomeList/HomeList";
 import { SearchMovie } from "components/SearchMovie/SearchMovie";
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import { Loader } from "components/Loader/Loader";
 
 import { useState } from "react";
 import { useLocation, useSearchParams } from "react-router-dom";
 
-export const Movies = () => {
-	const [searchParams, setSearchParams] = useSearchParams();
+const Movies = () => {
+const [searchParams, setSearchParams] = useSearchParams();
 const [films, setFilms] = useState([]);
 const [loader, setLoader] = useState(false);
 const location = useLocation();
@@ -36,8 +36,6 @@ useEffect(()=> {
 		} finally {
 			setLoader(false);
 		}
-
-		
 	}
 	searchMovie();
 	
@@ -57,11 +55,17 @@ const handleFromSubmit = (value) => {
   return (
 	<main>
 	 <Container>
+	
 		<SearchMovie onSubmit={handleFromSubmit}/>
 		{loader && <Loader/>}
-		<HomeList trandingFilms={films} />
+		
+	<HomeList trandingFilms={films} />
+		
+		
 	 </Container>
 	</main>
 
   );
 };
+
+export default Movies;

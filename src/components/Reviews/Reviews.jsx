@@ -2,9 +2,9 @@ import { getReviewMovie } from 'apiService/apiService';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { ReviewsList } from './Reviews.styled';
+import { Message, ReviewsList } from './Reviews.styled';
 
-export const Reviews = () => {
+const Reviews = () => {
   const { id } = useParams();
   const [reviews, setReviews] = useState([]);
   console.log(reviews);
@@ -21,18 +21,20 @@ export const Reviews = () => {
     <>
       {reviews.length ? (
         <ReviewsList>
-          {reviews.map(item => {
+          {reviews.map(({id, author, content}) => {
             return (
-              <li key={item.id}>
-                <h3>Author: {item.author}</h3>
-                <p>{item.content}</p>
+              <li key={id}>
+                <h3>Author: {author}</h3>
+                <p>{content}</p>
               </li>
             );
           })}
         </ReviewsList>
       ) : (
-        'We do not have any reviews for this movie'
+        <Message>We do not have any reviews for this movie</Message>
       )}
     </>
   );
 };
+
+export default Reviews;

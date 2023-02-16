@@ -1,8 +1,9 @@
 import { getCreditsMovie } from "apiService/apiService";
 import { useEffect } from "react";
 import { useState } from "react";
-import { useParams } from "react-router-dom"
-export const Cast = () => {
+import { useParams } from "react-router-dom";
+import { ActorName, CastItem, CastList, Role } from "./Cast.styled";
+const Cast = () => {
 	const noImagePoster = 'https://cdn.vectorstock.com/i/preview-1x/82/99/no-image-available-like-missing-picture-vector-43938299.jpg';
 	const pathImage = 'https://image.tmdb.org/t/p/w500';
 	const {id} = useParams();
@@ -19,16 +20,18 @@ export const Cast = () => {
 
 	console.log(cast);
 	return(
-		<ul>
+		<CastList>
 			{cast.map(({id, profile_path, name, character})=> {
 				return (
-					<li key={id}>
-						<img src={profile_path ? pathImage + profile_path : noImagePoster} alt="poster" width='100'/>
-						<p>{name}</p>
-						<p>{character}</p>
-					</li>
+					<CastItem key={id}>
+						<img src={profile_path ? pathImage + profile_path : noImagePoster} alt="poster" width='200'/>
+						<ActorName>{name}</ActorName>
+						<Role>{character}</Role>
+					</CastItem>
 				)
 			})}
-		</ul>
+		</CastList>
 	)
 }
+
+export default Cast;

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
 import { Alink, ItemLink } from './HomeList.styled';
 
-export const HomeList = ({ trandingFilms }) => {
+const HomeList = ({ trandingFilms }) => {
 	const location = useLocation();
 	
  
@@ -34,3 +34,5 @@ HomeList.propTypes = {
 		)
 	)
 }
+
+export default HomeList;

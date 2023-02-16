@@ -1,5 +1,5 @@
 import { ButtonSearch, Input, SearchForm } from "./SearchMovie.styled";
-
+import PropTypes from 'prop-types';
 export const SearchMovie = ({onSubmit}) => {
 
 	const handleSubmit = (e) => {
@@ -28,3 +28,7 @@ export const SearchMovie = ({onSubmit}) => {
 		 </>
 	  );
 	};
+
+	SearchMovie.propTypes = {
+		onSubmit: PropTypes.func.isRequired,
+	}
