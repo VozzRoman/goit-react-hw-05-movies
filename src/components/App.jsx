@@ -1,7 +1,7 @@
 import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Header from 'components/Header/Header';
-
+// const Header = lazy(() => import('./Header/Header'))
 const Home = lazy(() => import('../Pages/Home/Home'));
 const Movies = lazy(() => import('../Pages/Home/Home'));
 const FilmDeteils = lazy(() => import('../Pages/FilmDeteils/FilmDeteils'));

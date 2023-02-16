@@ -1,5 +1,6 @@
 import { getReviewMovie } from 'apiService/apiService';
-import { useEffect } from 'react';
+import { Loader } from 'components/Loader/Loader';
+import { Suspense, useEffect } from 'react';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Message, ReviewsList } from './Reviews.styled';
@@ -20,7 +21,8 @@ const Reviews = () => {
   return (
     <>
       {reviews.length ? (
-        <ReviewsList>
+			<Suspense fallback={<Loader/>}>
+				        <ReviewsList>
           {reviews.map(({id, author, content}) => {
             return (
               <li key={id}>
@@ -30,6 +32,10 @@ const Reviews = () => {
             );
           })}
         </ReviewsList>
+
+
+			</Suspense>
+
       ) : (
         <Message>We do not have any reviews for this movie</Message>
       )}

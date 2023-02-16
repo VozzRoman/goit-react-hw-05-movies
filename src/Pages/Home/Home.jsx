@@ -1,22 +1,24 @@
 import { Container } from 'components/App.styled';
+import { lazy, Suspense } from 'react';
 import { getTrnadingMovie } from 'apiService/apiService';
-import { Suspense, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useState } from 'react';
-import HomeList from 'components/HomeList/HomeList';
+// import HomeList from 'components/HomeList/HomeList';
 import { Loader } from 'components/Loader/Loader';
 import PropTypes from 'prop-types';
+const HomeList = lazy(()=> import('components/HomeList/HomeList'))
 
 
 
 const Home = ({title}) => {
 const [movies, setMovies] = useState([]);
-const [loading, setLoading] = useState(false);
+
 	useEffect(() => {
-		setLoading(true);
+	
 
 
 				async function trandMovies (){
-						setLoading(true);
+						
 					try {
 						const response = await getTrnadingMovie();
 						const data = response.data.results;
@@ -24,7 +26,7 @@ const [loading, setLoading] = useState(false);
 					} catch (error) {
 						console.log(error);
 					} finally {
-						setLoading(false);
+					
 					}
 				}
 
@@ -35,10 +37,12 @@ const [loading, setLoading] = useState(false);
     <main>
       <Container>
         <h2>{title}</h2>
-		  {loading && <Loader/>}
-		  <Suspense>
+		
+		  <Suspense fallback={<Loader/>}>
 		  {movies && <HomeList trandingFilms={movies}/>}
 		  </Suspense>
+		 
+		  
 		  
   
       </Container>

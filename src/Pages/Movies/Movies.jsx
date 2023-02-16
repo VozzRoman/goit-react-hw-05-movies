@@ -11,7 +11,6 @@ import { useLocation, useSearchParams } from "react-router-dom";
 const Movies = () => {
 const [searchParams, setSearchParams] = useSearchParams();
 const [films, setFilms] = useState([]);
-const [loader, setLoader] = useState(false);
 const location = useLocation();
 console.log(location.search);
 
@@ -22,7 +21,6 @@ useEffect(()=> {
 		return;
 	}
 	async function searchMovie(){
-		setLoader(true);
 		try{
 			const response = await getSearchMovie(search);
 			const data = response.data.results;
@@ -34,7 +32,6 @@ useEffect(()=> {
 		} catch (error) {
 			console.log(error)
 		} finally {
-			setLoader(false);
 		}
 	}
 	searchMovie();
@@ -47,7 +44,6 @@ const handleFromSubmit = (value) => {
 	}
 	setSearchParams({query: `${value}`});
 	setFilms([]);
-	
 
 }
 
@@ -55,12 +51,11 @@ const handleFromSubmit = (value) => {
   return (
 	<main>
 	 <Container>
-	
+	 <Suspense fallback={<Loader/>}>
 		<SearchMovie onSubmit={handleFromSubmit}/>
-		{loader && <Loader/>}
 		
-	<HomeList trandingFilms={films} />
-		
+		<HomeList trandingFilms={films} />
+		</Suspense>
 		
 	 </Container>
 	</main>

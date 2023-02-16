@@ -19,7 +19,6 @@ const FilmDeteils = () => {
   const { id } = useParams();
   console.log(id);
   const [deteils, setDeteils] = useState(null); //
-  const [loading, setLoading] = useState(false);
   const location = useLocation();
 
   console.log(location);
@@ -34,15 +33,12 @@ const FilmDeteils = () => {
   useEffect(() => {
 
     async function deteilsMovies() {
-		setLoading(true);
       try {
         const response = await getDeteilsMovie(id);
         console.log(response.data);
         setDeteils(response.data);
       } catch (error) {
         console.log(error);
-      } finally {
-        setLoading(false);
       }
     }
 
@@ -57,24 +53,25 @@ const FilmDeteils = () => {
         <>
 		  
           <CardFilm key={deteils.id}>
-			 {loading && <Loader/>}
+			 <Suspense fallback={<Loader/>}>
             <PosterInfo>
               <img src={deteils.poster_path ? pathImage + deteils.poster_path : noImagePoster} alt="" width="200" />
               <ItemsList>
 				 
                 <h2>{deteils.title}</h2>
-                <p>User score: {deteils.popularity}</p>
+                <p>User score: {Math.round(deteils.vote_average * 10)}</p>
                 <Overview>
                   Overview <span>{deteils.overview}</span>
                 </Overview>
                 <Overview>
-                  Genre{' '}
+                  Genre
                   <span>
                     {deteils.genres.map(item => item.name).join(', ')}
                   </span>
                 </Overview>
               </ItemsList>
             </PosterInfo>
+			</Suspense>
           </CardFilm>
           <ul>
             <p>Additioinal information</p>
@@ -85,7 +82,7 @@ const FilmDeteils = () => {
               <Link to="reviews">Reviews</Link>
             </li>
           </ul>
-			 <Suspense>
+			 <Suspense fallback={<Loader/>}>
 			 <Outlet />
 			 </Suspense>
          
