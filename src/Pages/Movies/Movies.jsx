@@ -15,7 +15,7 @@ const Movies = () => {
 //   const location = useLocation();
   // console.log(location.search);
 
-  const search = searchParams.get('query');
+  const search = searchParams.get('filmName');
 
   useEffect(() => {
     if (!search) {
@@ -41,7 +41,7 @@ const Movies = () => {
     if (value === '') {
       return alert('the field is empty');
     }
-    setSearchParams({ query: value });
+    setSearchParams({ filmName: value });
     setFilms([]);
   };
 

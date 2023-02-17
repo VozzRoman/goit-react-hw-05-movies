@@ -4,8 +4,7 @@ import { Container } from 'components/App.styled';
 export const SearchMovie = ({ onSubmit }) => {
   const handleSubmit = e => {
     e.preventDefault();
-    onSubmit(e.currentTarget.name.value);
-
+    onSubmit(e.currentTarget.name.value); 
     e.currentTarget.name.value = '';
   };
 
