@@ -7,16 +7,18 @@ import { Alink, ItemLink, ListFilms } from './HomeList.styled';
 const HomeList = ({ trandingFilms }) => {
   const location = useLocation();
 
-  console.log(trandingFilms);
+//   console.log(trandingFilms);
   return (
     <Container>
       <Suspense>
         <ListFilms>
           {trandingFilms.map(({ id, title }) => {
             return (
-					<ItemLink key={id}>
-              <Alink  to={`/movies/${id}`} state={{ from: location }}>{title} </Alink>
-				  </ItemLink>
+              <ItemLink key={id}>
+                <Alink to={`/movies/${id}`} state={{ from: location }}>
+                  {title}{' '}
+                </Alink>
+              </ItemLink>
             );
           })}
         </ListFilms>
@@ -30,7 +32,7 @@ HomeList.propTypes = {
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       title: PropTypes.string.isRequired,
-    }).isRequired,
+    }).isRequired
   ).isRequired,
 };
 

@@ -5,7 +5,6 @@ margin-top: 30px;
 
 `;
 export const Label = styled.label`
-position: relative;
 `;
 
 export const ButtonSearch = styled.button`
@@ -26,6 +25,9 @@ export const Input = styled.input`
 padding-left: 10px;
 width: 30%;
 height: 30px;
+@media screen and (max-width: 980px){
+	width: 60%;
+}
 `;
 
 

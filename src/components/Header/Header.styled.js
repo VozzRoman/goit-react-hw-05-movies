@@ -2,17 +2,13 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 export const HeaderStyle = styled.header`
-height: 60px;
 display: flex;
 align-items: center;
-justify-content: flex-start;
-box-shadow: 2px 2px 8px 2px gray;
 
 `;
 
 export const NavList = styled.nav`
 display: flex;
-align-items: center;
 list-style-type: none;
 `;
 
@@ -29,5 +25,12 @@ export const LinkHref = styled(NavLink)`
   &.active {
     color: red;
   }
+
+`;
+
+export const MainHeader = styled.div`
+align-items: center;
+padding: 30px 0px 30px 0px;
+box-shadow: 2px 2px 8px 2px gray;
 
 `

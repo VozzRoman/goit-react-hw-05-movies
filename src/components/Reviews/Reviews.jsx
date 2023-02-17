@@ -8,7 +8,7 @@ import { Message, ReviewsList } from './Reviews.styled';
 const Reviews = () => {
   const { id } = useParams();
   const [reviews, setReviews] = useState([]);
-  console.log(reviews);
+//   console.log(reviews);
 
   useEffect(() => {
     async function reviewsMovies() {

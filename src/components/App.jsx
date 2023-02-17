@@ -1,7 +1,6 @@
 import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Header from 'components/Header/Header';
-// const Header = lazy(() => import('./Header/Header'))
 const Home = lazy(() => import('../Pages/Home/Home'));
 const Movies = lazy(() => import('../Pages/Movies/Movies'));
 const FilmDeteils = lazy(() => import('../Pages/FilmDeteils/FilmDeteils'));
@@ -11,7 +10,6 @@ const Reviews = lazy(() => import('./Reviews/Reviews'));
 // import Home from "Pages/Home/Home";
 // import Movies from "Pages/Movies/Movies";
 // import { NotFoundPage } from "Pages/NotFound/NotFoundPage";
-
 // import FilmDeteils from "Pages/FilmDeteils/FilmDeteils";
 // import Cast from "./Cast/Cast";
 // import Reviews from "./Reviews/Reviews";

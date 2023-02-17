@@ -1,30 +1,38 @@
-import { Container} from 'components/App.styled';
+import { Container } from 'components/App.styled';
 import { Outlet } from 'react-router-dom';
-import {HeaderStyle, NavList, NavItem, LinkHref} from 'components/Header/Header.styled';
+import {
+  HeaderStyle,
+  NavList,
+  NavItem,
+  LinkHref,
+  MainHeader,
+} from 'components/Header/Header.styled';
 import { Suspense } from 'react';
 import { Loader } from 'components/Loader/Loader';
 
 const Header = () => {
   return (
     <>
-      <HeaderStyle>
+      <MainHeader>
         <Container>
-          <nav>
+          <HeaderStyle>
             <NavList>
               <NavItem>
-                <LinkHref to="/" end>Home</LinkHref>
+                <LinkHref to="/" end>
+                  Home
+                </LinkHref>
               </NavItem>
               <NavItem>
                 <LinkHref to="/movies">Movies</LinkHref>
               </NavItem>
             </NavList>
-          </nav>
+          </HeaderStyle>
         </Container>
-      </HeaderStyle>
-		<Suspense fallback={<Loader/>}>
-		<Outlet />
-		</Suspense>
-		
+      </MainHeader>
+
+      <Suspense fallback={<Loader />}>
+        <Outlet />
+      </Suspense>
     </>
   );
 };

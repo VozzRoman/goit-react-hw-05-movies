@@ -10,7 +10,10 @@ padding: 20px 0;
 export const PosterInfo = styled.div`
 display: flex;
 align-items: center;
-
+@media screen and (max-width: 780px) {
+	flex-wrap: wrap;
+	justify-content: center;
+}
 `;
 
 export const Overview = styled.p`
@@ -31,7 +34,9 @@ margin-left: 40px;
 border: 1px solid orange;
 padding: 10px 20px 70px 20px;
 border-radius: 8px;
-
+@media screen and (max-width: 780px) {
+	margin-left: 0;
+}
 
 `;
 
@@ -59,4 +64,21 @@ font-size: 23px;
 font-weight: 700;
 margin-bottom: 20px;
 
+`;
+
+export const ButtonBack = styled(Link)`
+margin-top: 20px;
+display: inline-flex;
+align-items: center;
+text-decoration: none;
+border-radius: 4px;
+font-weight: 500;
+justify-content: center;
+color: white;
+transition: background-color 250ms linear;
+&:hover{
+	background-color: blue;
+}
+padding: 5px 7px;
+background-color: orange;
 `;
