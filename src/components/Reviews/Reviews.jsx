@@ -3,7 +3,7 @@ import { Loader } from 'components/Loader/Loader';
 import { Suspense, useEffect } from 'react';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Message, ReviewsList } from './Reviews.styled';
+import { Message, ReviewsList, Text } from './Reviews.styled';
 
 const Reviews = () => {
   const { id } = useParams();
@@ -27,7 +27,7 @@ const Reviews = () => {
             return (
               <li key={id}>
                 <h3>Author: {author}</h3>
-                <p>{content}</p>
+                <Text>{content}</Text>
               </li>
             );
           })}

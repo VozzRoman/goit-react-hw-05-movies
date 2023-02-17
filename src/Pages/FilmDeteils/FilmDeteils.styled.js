@@ -26,6 +26,7 @@ margin-bottom: 10px;
 	display: block;
 	font-size: 16px;
 	font-weight: 400;
+	line-height: 1.3;
  }
 `;
 
