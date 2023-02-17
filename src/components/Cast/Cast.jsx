@@ -22,7 +22,7 @@ const Cast = () => {
   console.log(cast);
   return (
     <CastList>
-      {cast.map(({ id, profile_path, name, character }, index) => {
+      {cast.map(({ id, profile_path, name, character }) => {
         return (
           <CastItem key={id}>
             <img
