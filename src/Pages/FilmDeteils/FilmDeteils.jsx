@@ -27,12 +27,9 @@ const FilmDeteils = () => {
   console.log(id);
   const [deteils, setDeteils] = useState(null); //
   const location = useLocation();
-  
-  
-
-  const searchPath = useRef(location?.state?.from?.search);
+  const searchPath = useRef(location.state?.from.search);
   console.log(searchPath.current)
-  const initialPath = useRef(location?.state?.from?.pathname);
+  const initialPath = useRef(location.state?.from.pathname);
   console.log(initialPath.current);
 
   let backLink = '';
