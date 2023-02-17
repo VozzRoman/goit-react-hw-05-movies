@@ -6,6 +6,7 @@ import { Alink, ItemLink, ListFilms } from './HomeList.styled';
 
 const HomeList = ({ trandingFilms }) => {
   const location = useLocation();
+  console.log(location);
 
 //   console.log(trandingFilms);
   return (

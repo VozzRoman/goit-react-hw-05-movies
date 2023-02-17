@@ -1,4 +1,4 @@
-import { Outlet, useLocation, useParams } from 'react-router-dom';
+import { Outlet, useLocation,  useParams } from 'react-router-dom';
 import { Container } from 'components/App.styled';
 import { IoIosArrowBack } from "react-icons/io";
 import {
@@ -22,9 +22,13 @@ const FilmDeteils = () => {
   const noImagePoster =
     'https://cdn.vectorstock.com/i/preview-1x/82/99/no-image-available-like-missing-picture-vector-43938299.jpg';
   const { id } = useParams();
-//   console.log(id);
+  const urlData = useParams()
+  console.log(urlData);
+  console.log(id);
   const [deteils, setDeteils] = useState(null); //
   const location = useLocation();
+  
+  
 
   const searchPath = useRef(location?.state?.from?.search);
   console.log(searchPath.current)

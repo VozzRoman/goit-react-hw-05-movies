@@ -27,7 +27,7 @@ const Movies = () => {
         const data = response.data.results;
         console.log(data);
         if (data.length === 0) {
-          return alert('No mathces please enter correct name');
+          return alert('No matches please enter correct name');
         }
         setFilms(data);
       } catch (error) {
@@ -41,7 +41,7 @@ const Movies = () => {
     if (value === '') {
       return alert('the field is empty');
     }
-    setSearchParams({ query: `${value}` });
+    setSearchParams({ query: value });
     setFilms([]);
   };
 
