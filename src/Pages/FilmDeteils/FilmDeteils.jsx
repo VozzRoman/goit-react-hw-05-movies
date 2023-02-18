@@ -1,4 +1,4 @@
-import { Outlet, useLocation,  useParams } from 'react-router-dom';
+import { Outlet, useLocation, useParams } from 'react-router-dom';
 import { Container } from 'components/App.styled';
 import { IoIosArrowBack } from "react-icons/io";
 import {
@@ -27,22 +27,42 @@ const FilmDeteils = () => {
   console.log(id);
   const [deteils, setDeteils] = useState(null); //
   const location = useLocation();
+  console.log(location.pathname);
   const searchPath = useRef(location.state?.from.search);
-  console.log(searchPath.current)
+  console.log(searchPath)
   const initialPath = useRef(location.state?.from.pathname);
   console.log(initialPath.current);
+  
+
+//Проверка - есть обьект ЛОКАТИОН или нет
+//const backLink = locatino.state?.from ?? "/product"; - то же саме что и
+//let backLink = "/products"
+//if(location.state && location.state.from){
+//backLinke = location.state.form;
+//}
+
+//Если просто назад!!!!!
+// const navigate = useNavigate();
+// const backBth = () => {
+// 	navigate(-1);
+// }
+
 
   let backLink = '';
   if (initialPath.current === '/') {
-    backLink = '/';
+     backLink = '/';
+
   } else backLink = `/movies/${searchPath.current}`;
+  
 
   useEffect(() => {
+	
     async function deteilsMovies() {
       try {
-        const response = await getDeteilsMovie(id);
-        console.log(response.data);
-        setDeteils(response.data);
+				const response = await getDeteilsMovie(id);
+					console.log(response.data);
+					setDeteils(response.data);
+			
       } catch (error) {
         console.log(error);
       }
@@ -53,7 +73,7 @@ const FilmDeteils = () => {
 
   return (
     <Container>
-      <ButtonBack to={backLink}><IoIosArrowBack/>Go back</ButtonBack>
+      <ButtonBack to={backLink !== '/movies/undefined' ? backLink : '/'}><IoIosArrowBack/>Go back</ButtonBack>
       {deteils && (
         <>
           <CardFilm key={deteils.id}>

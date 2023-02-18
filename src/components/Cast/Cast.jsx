@@ -1,6 +1,7 @@
 import { getCreditsMovie } from 'apiService/apiService';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { Message } from 'components/Reviews/Reviews.styled';
 import { useParams } from 'react-router-dom';
 import { ActorName, CastItem, CastList, Role } from './Cast.styled';
 const Cast = () => {
@@ -21,21 +22,27 @@ const Cast = () => {
 
   console.log(cast);
   return (
-    <CastList>
-      {cast.map(({ id, profile_path, name, character }) => {
-        return (
-          <CastItem key={id}>
-            <img
-              src={profile_path ? pathImage + profile_path : noImagePoster}
-              alt="poster"
-              width="142"
-            />
-            <ActorName>{name}</ActorName>
-            <Role>{character}</Role>
-          </CastItem>
-        );
-      })}
-    </CastList>
+	<>
+			{cast.length ? (<CastList>
+			{cast.map(({ id, profile_path, name, character }) => {
+			return (
+				<CastItem key={id}>
+					<img
+					src={profile_path ? pathImage + profile_path : noImagePoster}
+					alt="poster"
+					width="142"
+					/>
+					<ActorName>{name}</ActorName>
+					<Role>{character}</Role>
+				</CastItem>
+			);
+			})}
+			</CastList>) : ( <Message>We do not have any cast for this movie</Message>)}
+	
+	
+	
+	</>
+
   );
 };
 
